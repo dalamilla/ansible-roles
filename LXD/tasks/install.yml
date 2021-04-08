@@ -1,0 +1,8 @@
+---
+# tasks install file for LXD
+
+- name: install lxd snap
+  snap:
+    name: lxd
+    channel:  "{{ lxd_version }}"
+    state: present

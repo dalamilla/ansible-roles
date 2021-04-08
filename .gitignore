@@ -1,0 +1,10 @@
+# .gitignore
+
+# Test directory
+tests
+
+# Ansible configuration
+ansible.cfg
+
+# Backup files
+*~

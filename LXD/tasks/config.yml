@@ -1,0 +1,19 @@
+---
+# tasks config file for LXD
+
+- name: add lxd configuration file
+  template:
+    src: input.yml.j2
+    dest: /tmp/input.yml
+
+- name: init lxd configuration
+  shell: lxd init --preseed < /tmp/input.yml
+
+- name: copy template for lxd name resolution
+  template:
+    src: lxd.network.j2
+    dest: /etc/systemd/network/lxd.network
+    owner: root
+    group: root
+    mode: 0644
+  notify: enable systemd-networkd

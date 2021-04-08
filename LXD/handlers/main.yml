@@ -1,0 +1,7 @@
+---
+# handlers file for LXD
+
+- name: enable systemd-networkd
+  systemd:
+    name: systemd-networkd
+    enabled: yes

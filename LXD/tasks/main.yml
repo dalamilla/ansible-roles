@@ -1,0 +1,28 @@
+---
+# tasks file for LXD
+
+- name: lxd installation
+  include: install.yml
+  tags:
+    - lxd
+
+- name: lxd configuration
+  include: config.yml
+  tags:
+    - lxd
+    - lxd-conf
+
+- name: start and enable lxd daemon
+  systemd:
+    name: snap.lxd.daemon
+    daemon_reload: true
+    state: started
+    enabled: true
+  tags:
+   - lxd
+
+- name: lxd containers
+  include: containers.yml
+  tags:
+    - lxd
+    - lxd-containers

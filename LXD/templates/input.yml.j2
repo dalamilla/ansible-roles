@@ -1,0 +1,41 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+config: {}
+networks:
+- config:
+    ipv4.address: {{ lxd_ipv4_address }}/24
+    ipv4.nat: "true"
+    ipv6.address: {{ lxd_ipv6_address }}/64
+    ipv6.nat: "true"
+  description: ""
+  name: lxdbr0
+  type: bridge
+  project: default
+storage_pools:
+- config:
+{% for key, value in lxd_storage_config.items() %}
+    {{ key }}: {{ value }}
+{% endfor %}
+  description: ""
+  name: default
+  driver: {{ lxd_storage_driver }}
+profiles:
+- config: {}
+  description: Default LXD profile
+  devices:
+    eth0:
+      name: eth0
+      network: lxdbr0
+      type: nic
+    root:
+      path: /
+      pool: default
+      type: disk
+  name: default
+projects:
+- config:
+    features.images: "true"
+    features.networks: "true"
+    features.profiles: "true"
+    features.storage.volumes: "true"
+  description: Default LXD project
+  name: default

@@ -1,0 +1,17 @@
+---
+# tasks containers file for LXD
+
+- name: Create a hello-world container
+  lxd_container:
+    name: hello-world
+    state: started
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: simplestreams
+      alias: ubuntu/focal/amd64
+    profiles: ["default"]
+    config: {"security.nesting": "true"}
+    wait_for_ipv4_addresses: true
+    timeout: 600
