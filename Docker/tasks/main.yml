@@ -1,0 +1,22 @@
+---
+# tasks file for Docker
+
+- name: docker installation
+  include: install.yml
+  tags:
+    - docker
+
+- name: docker configuration
+  include: config.yml
+  tags:
+    - docker
+    - docker-conf
+
+- name: start and enable docker daemon
+  systemd:
+    name: docker
+    daemon_reload: true
+    state: started
+    enabled: true
+  tags:
+    - docker

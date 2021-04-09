@@ -1,0 +1,10 @@
+---
+# tasks install file for Docker
+
+- name: add docker configuration file
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+  notify: restart docker service
