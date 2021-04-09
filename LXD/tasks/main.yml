@@ -19,7 +19,7 @@
     state: started
     enabled: true
   tags:
-   - lxd
+    - lxd
 
 - name: lxd containers
   include: containers.yml
