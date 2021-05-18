@@ -1,0 +1,16 @@
+---
+# defaults file for mariadb
+
+mariadb_version: '10.5'
+
+mariadb_url: 'https://mariadb.org'
+mariadb_mirror_url: 'http://sfo1.mirrors.digitalocean.com'
+mariadb_channel: 'main'
+
+mariadb_root_pass: ''
+
+mariadb_conf_biadd: '0.0.0.0'
+
+mariadb_databases: []
+
+mariadb_users: []

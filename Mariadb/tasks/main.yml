@@ -1,0 +1,34 @@
+---
+# tasks main file for mariadb
+
+- name: mariadb installation
+  include: install.yml
+  tags:
+    - mariadb
+
+- name: mariadb configuration
+  include: config.yml
+  tags:
+    - mariadb
+    - mariadb-conf
+
+- name: mariadb databases
+  include: dbs.yml
+  tags:
+    - mariadb
+    - mariadb-dbs
+
+- name: mariadb users
+  include: users.yml
+  tags:
+    - mariadb
+    - mariadb-users
+
+- name: start and enable mariadb daemon
+  systemd:
+    name: mariadb
+    daemon_reload: true
+    state: started
+    enabled: true
+  tags:
+    - mariadb

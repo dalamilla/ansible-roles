@@ -1,0 +1,13 @@
+---
+# handlers file for mariadb
+
+- name: stop mariadb services
+  systemd:
+    name: mariasdb
+    state: stopped
+
+- name: restart mariadb services
+  systemd:
+    name: mariadb
+    state: restarted
+    daemon_reload: yes

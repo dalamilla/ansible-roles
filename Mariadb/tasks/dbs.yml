@@ -1,0 +1,12 @@
+---
+# tasks dbs file for mariadb
+
+- name: mariadb databases
+  mysql_db:
+    name: "{{ item.name }}"
+    encoding: "{{ item.encoding | default('utf8') }}"
+    state: "{{ item.state | default('present') }}"
+    login_user: root
+    login_password: "{{ mariadb_root_pass }}"
+  no_log: true
+  with_items: "{{ mariadb_databases }}"

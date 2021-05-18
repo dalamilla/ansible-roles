@@ -1,0 +1,61 @@
+---
+# tasks install file for mariadb
+
+- name: install mariadb dependencies
+  apt:
+    pkg:
+      - software-properties-common
+      - dirmngr
+      - apt-transport-https
+      - python3-mysqldb
+    state: present
+    update_cache: yes
+
+- name: add mariadb apt key
+  apt_key:
+    url: "{{ mariadb_url }}/mariadb_release_signing_key.asc"
+    state: present
+
+- name: add mariadb apt repo
+  apt_repository:
+    repo: "deb [arch={{ pkg_arch }}] {{ mariadb_mirror_url }}/mariadb/repo/{{ mariadb_version }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} {{ mariadb_channel }}"
+    filename: docker
+    state: present
+
+- name: install mariadb
+  apt:
+    pkg:
+      - mariadb-server
+      - mariadb-client
+      - mariadb-common
+    state: present
+    update_cache: yes
+
+- name: check mariadb security
+  mysql_info:
+    login_db: mysql
+  register: mariadbsecure
+  ignore_errors: yes
+  changed_when: false
+  no_log: true
+
+- name: secure mariadb
+  block:
+    - name: delete all anonymous user accounts
+      mysql_user:
+        name: ''
+        host_all: yes
+        state: absent
+
+    - name: delete database "test"
+      mysql_db:
+        name: test
+        state: absent
+
+    - name: set root password
+      mysql_user:
+        name: root
+        password: "{{ mariadb_root_pass }}"
+        check_implicit_admin: yes
+        state: present
+  when: mariadbsecure.failed == false
