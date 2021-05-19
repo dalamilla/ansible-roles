@@ -39,7 +39,6 @@
     state: present
   
 - name: install docker
-  tags: docker
   apt:
     pkg:
       - docker-ce
