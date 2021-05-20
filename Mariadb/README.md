@@ -11,7 +11,7 @@ None.
 Role Variables
 --------------
 
-None of the variables are required. if variables are not defined, the default variables are used.
+The variable "mariadb_root_pass" are required. if variables are not defined, the default variables are used.
 
 | Variable               | Default                                  | Description                                           |
 | -----------------------| -----------------------------------------| ------------------------------------------------------|
@@ -26,7 +26,7 @@ None of the variables are required. if variables are not defined, the default va
 
 Creating databases:
 
-DB dict with fields "name" and default values are "encoding" = utf8 and "state" = present .
+DB dict with fields "name" and default values are "encoding" = utf8 and "state" = present.
 
 ```yaml
 mariadb_databases:
@@ -38,7 +38,7 @@ mariadb_databases:
 
 Creating users:
 
-User dict with fields "name", "password", "privs" and default value are "host" = localhost, "append_privs" = no and "state" = present .
+User dict with fields "name", "password", "privs" and default value are "host" = localhost, "append_privs" = no and "state" = present.
 
 ```yaml
 mariadb_users:
