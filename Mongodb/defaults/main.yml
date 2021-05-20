@@ -1,0 +1,35 @@
+---
+# defaults file for Mongodb
+
+mongodb_version: '4.4'
+
+mongodb_key_url: 'https://www.mongodb.org/static/pgp/server-{{ mongodb_version }}.asc'
+mongodb_pkg_url: 'https://repo.mongodb.org/apt/{{ ansible_distribution | lower }}'
+
+mongodb_root_pass: ''
+
+mongodb_conf_storage: 
+  dbPath: /var/lib/mongodb
+  journal:
+    enabled: true
+
+mongodb_conf_systemLog:
+  destination: file
+  logAppend: true
+  path: /var/log/mongodb/mongod.log
+
+mongodb_conf_net:
+  port: 27017
+  bindIp: 127.0.0.1
+
+mongodb_conf_processManagement:
+  timeZoneInfo: /usr/share/zoneinfo
+
+mongodb_conf_security:
+  authorization: enabled
+
+mongodb_conf_operationProfiling: {}
+
+mongodb_conf_replication: {}
+
+mongodb_conf_sharding: {}

@@ -1,0 +1,22 @@
+---
+# tasks file for Mongodb
+
+- name: mongodb installation
+  include: install.yml
+  tags:
+    - mongodb
+
+- name: mongodb configuration
+  include: config.yml
+  tags:
+    - mongodb
+    - mongodb-conf
+
+- name: start and enable mongodb daemon
+  systemd:
+    name: mongod
+    daemon_reload: true
+    state: started
+    enabled: true
+  tags:
+    - mongod

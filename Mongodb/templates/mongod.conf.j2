@@ -1,0 +1,39 @@
+{% if mongodb_conf_storage -%}
+storage:
+{{ mongodb_conf_storage | to_nice_yaml | indent(2, true) }}
+{% endif %}
+
+{% if mongodb_conf_systemLog -%}
+systemLog:
+{{ mongodb_conf_systemLog | to_nice_yaml | indent(2, true) }}
+{% endif %}
+
+{% if mongodb_conf_net -%}
+net:
+{{ mongodb_conf_net | to_nice_yaml | indent(2, true) }}
+{% endif %}
+
+{% if mongodb_conf_processManagement -%}
+processManagement:
+{{ mongodb_conf_processManagement | to_nice_yaml | indent(2, true) }}
+{% endif %}
+
+{% if mongodb_conf_security -%}
+security:
+{{ mongodb_conf_security | to_nice_yaml | indent(2, true) }}
+{% endif %}
+
+{% if mongodb_conf_operationProfiling -%}
+operationProfiling:
+{{ mongodb_conf_operationProfiling | to_nice_yaml | indent(2, true) }}
+{% endif %}
+
+{% if mongodb_conf_replication -%}
+replication:
+{{ mongodb_conf_replication | to_nice_yaml | indent(2, true) }}
+{% endif %}
+
+{% if mongodb_conf_sharding -%}
+sharding:
+{{ mongodb_conf_sharding | to_nice_yaml | indent(2, true) }}
+{% endif %}

@@ -1,0 +1,55 @@
+---
+# tasks install file for Mongodb
+
+- name: install mongodb dependencies
+  apt:
+    pkg:
+      - gnupg
+      - wget
+      - python3-pip
+    state: present
+    update_cache: yes
+
+- name: install mongodb pip module
+  pip:
+    name: pymongo
+
+- name: add mongodb apt key
+  apt_key:
+    url: "{{ mongodb_key_url }}"
+    state: present
+
+- name: add mongodb apt repo
+  apt_repository:
+    repo: "deb [arch={{ pkg_arch }}] {{ mongodb_pkg_url }} {{ ansible_distribution_release }}/mongodb-org/{{ mongodb_version }} multiverse"
+    filename: mongodb
+    state: present
+
+- name: install mongodb
+  apt:
+    name: mongodb-org
+    state: present
+    update_cache: yes
+
+- name: check mongodb security
+  shell: 'mongo --eval "db.getUsers()"'
+  register: mongodbsecure
+  ignore_errors: true
+  changed_when: false
+  no_log: true
+
+- name: add mongodb root user 
+  block:
+    - name: set root password
+      mongodb_user:
+        database: admin
+        user: root
+        password: "{{ mongodb_root_pass }}"
+        roles: 
+          - db: admin
+            role: root
+          - db: local
+            role: read
+        state: present
+      no_log: true
+  when: mongodbsecure.failed == false

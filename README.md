@@ -9,3 +9,4 @@ A collection of Ansible roles.
 | [LXD](./LXD/README.md)                                 | Installation and creation of default profile of LXD.               |
 | [Docker](./Docker/README.md)                           | Installation and configuration of Docker.                          |
 | [Mariadb](./Mariadb/README.md)                         | Installation and configuration of Mariadb.                         |
+| [Mongodb](./Mongodb/README.md)                         | Installation and configuration of Mongodb.                         |
