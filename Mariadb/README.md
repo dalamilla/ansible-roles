@@ -79,5 +79,5 @@ Example Playbook
         host: '10.0.0.%' 
         priv: 'milkyway.*:ALL'
   roles:
-      - role: mariadb
+    - role: Mariadb
 ```

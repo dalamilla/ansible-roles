@@ -46,5 +46,5 @@ Example Playbook
     docker_config:
       storage-driver: 'btrfs'
   roles:
-      - role: docker
+    - role: Docker
 ```

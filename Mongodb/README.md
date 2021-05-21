@@ -84,5 +84,5 @@ Example Playbook
   vars:
     mongodb_root_pass: '{{ vault_mongodb_root_pass }}'
   roles:
-      - role: Mongodb
+    - role: Mongodb
 ```

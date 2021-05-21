@@ -35,5 +35,5 @@ Example Playbook
   vars:
     lxd_version: 'latest/stable'
   roles:
-      - role: lxd
+    - role: LXD
 ```
