@@ -1,0 +1,22 @@
+---
+# tasks file for Redis
+
+- name: redis installation
+  include: install.yml
+  tags:
+    - redis
+
+- name: redis configuration
+  include: config.yml
+  tags:
+    - redis
+    - redis-conf
+
+- name: start and enable redis daemon
+  systemd:
+    name: redis-server
+    daemon_reload: true
+    state: started
+    enabled: true
+  tags:
+    - redis

@@ -1,0 +1,7 @@
+---
+# handlers file for Redis
+
+- name: restart redis service
+  systemd:
+    name: redis-server
+    state: restarted

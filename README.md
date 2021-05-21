@@ -10,3 +10,4 @@ A collection of Ansible roles.
 | [Docker](./Docker/README.md)                           | Installation and configuration of Docker.                          |
 | [Mariadb](./Mariadb/README.md)                         | Installation and configuration of Mariadb.                         |
 | [Mongodb](./Mongodb/README.md)                         | Installation and configuration of Mongodb.                         |
+| [Redis](./Redis/README.md)                             | Installation and configuration of Redis.                           |

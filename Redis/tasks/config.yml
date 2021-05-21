@@ -1,0 +1,11 @@
+---
+# tasks install file for Redis
+
+- name: add redis configuration file
+  template:
+    src: redis.conf.j2
+    dest: /etc/redis/redis.conf
+    owner: root
+    group: root
+    mode: 0640
+  notify: restart redis service

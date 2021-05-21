@@ -1,0 +1,12 @@
+---
+# tasks install file for Redis
+
+- name: add redis ppa repo
+  apt_repository:
+    repo: ppa:redislabs/redis
+  
+- name: install redis
+  apt:
+    name: redis
+    state: present
+    update_cache: yes

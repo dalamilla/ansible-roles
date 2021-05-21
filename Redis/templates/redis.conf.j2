@@ -1,0 +1,4 @@
+{% for key, value in redis_config.items() %}
+{{ key }} {{ value }}
+{% endfor %}
+requirepass {{ redis_password }}
