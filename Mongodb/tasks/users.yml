@@ -1,0 +1,14 @@
+---
+# tasks users file for Mongodb
+
+- name: mongodb users
+  mongodb_user:
+    name: "{{ item.name }}"
+    password: "{{ item.password }}"
+    database: "{{ item.db }}"
+    roles: "{{ item.roles | default('read') }}"
+    state: "{{ item.state | default('present') }}"
+    login_user: root
+    login_password: "{{ mongodb_root_pass }}"
+  no_log: true
+  with_items: "{{ mongodb_users }}"

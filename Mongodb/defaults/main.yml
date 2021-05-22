@@ -8,6 +8,8 @@ mongodb_pkg_url: 'https://repo.mongodb.org/apt/{{ ansible_distribution | lower }
 
 mongodb_root_pass: ''
 
+mongodb_users: []
+
 mongodb_conf_storage: 
   dbPath: /var/lib/mongodb
   journal:

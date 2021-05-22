@@ -12,6 +12,12 @@
     - mongodb
     - mongodb-conf
 
+- name: mongodb users
+  include: users.yml
+  tags:
+    - mongodb
+    - mongodb-users
+
 - name: start and enable mongodb daemon
   systemd:
     name: mongod

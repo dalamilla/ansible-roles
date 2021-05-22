@@ -19,6 +19,7 @@ The variable "mongodb_root_pass" are required. if variables are not defined, the
 | **mongodb_key_url**                 | 'https://www.mongodb.org/static/pgp/server-{{ mongodb_version }}.asc' | URL of Mongodb key.                                              |
 | **mongodb_pkg_url**                 | 'https://repo.mongodb.org/apt/{{ ansible_distribution | lower }}'     | URL of Mongodb repo package.                                     |
 | **mongodb_root_pass**               | ''                                                                    | Password of root user.                                           |
+| **mongodb_users**                   | []                                                                    | List of dicts of users (check default below).                    |
 | **mongodb_conf_storage**            | {}                                                                    | Dict of Mongodb storage config (check default below).            |
 | **mongodb_conf_systemLog**          | {}                                                                    | Dict of Mongodb systemLog config (check default below).          |
 | **mongodb_conf_net**                | {}                                                                    | Dict of Mongodb net config (check default below).                |
@@ -29,6 +30,23 @@ The variable "mongodb_root_pass" are required. if variables are not defined, the
 | **mongodb_conf_sharding**           | {}                                                                    | Dict of Mongodb sharding config.                                 |
 
 
+Creating users:
+
+User dict with fields "name", "password", "db" and default values are "roles" = read and "state" = present.
+
+```yaml
+mongodb_users:
+  - name: dorotheae
+    password: '{{ vault_mongodb_dorotheae_pass }}'
+    db: lithops
+    roles: readWrite,dbAdmin
+  - name: francisci
+    password: '{{ vault_mongodb_francisci_pass }}'
+    db: lithops
+  - name: echeveria
+    db: lithops
+    state: absent
+```
 
 Default configuration for storage (mongodb_conf_storage variable):
 
@@ -83,6 +101,15 @@ Example Playbook
   become: true
   vars:
     mongodb_root_pass: '{{ vault_mongodb_root_pass }}'
+    mongodb_users:
+      - name: acreana
+        password: '{{ vault_mongodb_acreana_pass }}'
+        db: monstera
+        roles: readWrite,dbAdmin
+      - name: deliciosa
+        password: '{{ vault_mongodb_deliciosa_pass }}'
+        db: monstera
+        roles: readWriteAnyDatabase
   roles:
     - role: Mongodb
 ```
