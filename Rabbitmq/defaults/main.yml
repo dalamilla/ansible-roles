@@ -1,0 +1,22 @@
+---
+# defaults file for Rabbitmq
+
+rabbitmq_key_server: 'hkps://keys.openpgp.org'
+rabbitmq_key_id: '0x0A9AF2115F4687BD29803A206B73A36E6026DFCA'
+
+
+rabbitmq_url: 'https://dl.cloudsmith.io/public/rabbitmq'
+
+rabbitmq_erlang_key: 'gpg.E495BB49CC4BBE5B.key'
+rabbitmq_server_key: 'gpg.9F4587F226208342.key'
+
+rabbitmq_erlang_pkg_url: '{{ rabbitmq_url }}/rabbitmq-erlang/deb/{{ ansible_distribution | lower }}'
+rabbitmq_server_pkg_url: '{{ rabbitmq_url }}/rabbitmq-server/deb/{{ ansible_distribution | lower }}'
+
+rabbitmq_channel: 'main'
+
+rabbitmq_config: {}
+
+rabbitmq_users: []
+
+rabbitmq_vhosts: []

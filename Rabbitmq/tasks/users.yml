@@ -1,0 +1,14 @@
+---
+# tasks users file for Rabbitmq
+
+- name: rabbitmq users
+  rabbitmq_user:
+    user: "{{ item.name }}"
+    password: "{{ item.password }}"
+    vhost: "{{ item.vhost | default('/') }}"
+    configure_priv: "{{ item.c_privs | default('.*') }}"
+    read_priv: "{{ item.r_privs | default('.*') }}"
+    write_priv: "{{ item.w_privs | default('.*') }}"
+    state: "{{ item.state | default('present') }}"
+  no_log: true
+  with_items: "{{ rabbitmq_users }}"

@@ -1,0 +1,83 @@
+---
+# tasks install file for Rabbitmq
+
+- name: install rabbitmq dependencies
+  apt:
+    pkg:
+      - curl
+      - gnupg
+      - debian-keyring
+      - debian-archive-keyring
+      - apt-transport-https
+    state: present
+    update_cache: yes
+
+- name: add rabbitmq-main apt key
+  apt_key:
+    keyserver: "{{ rabbitmq_key_server }}"
+    id: "{{ rabbitmq_key_id }}"
+    state: present
+
+- name: add rabbitmq-erlang apt key
+  apt_key:
+    url: "{{ rabbitmq_url }}/rabbitmq-erlang/{{ rabbitmq_erlang_key }}"
+    state: present
+
+- name: add rabbitmq-server apt key
+  apt_key:
+    url: "{{ rabbitmq_url }}/rabbitmq-server/{{ rabbitmq_server_key }}"
+    state: present
+
+
+- name: add rabbitmq-erlang apt repo
+  apt_repository:
+    repo: "deb {{ rabbitmq_erlang_pkg_url }} {{ ansible_distribution_release }} {{ rabbitmq_channel }}"
+    filename: rabbitmq-erlang
+    state: present
+
+- name: add rabbitmq-erlang apt source repo
+  apt_repository:
+    repo: "deb-src {{ rabbitmq_erlang_pkg_url }} {{ ansible_distribution_release }} {{ rabbitmq_channel }}"
+    filename: rabbitmq-erlang
+    state: present
+
+- name: add rabbitmq-server apt repo
+  apt_repository:
+    repo: "deb {{ rabbitmq_server_pkg_url }} {{ ansible_distribution_release }} {{ rabbitmq_channel }}"
+    filename: rabbitmq-server
+    state: present
+
+- name: add rabbitmq-server apt source repo
+  apt_repository:
+    repo: "deb-src {{ rabbitmq_server_pkg_url }} {{ ansible_distribution_release }} {{ rabbitmq_channel }}"
+    filename: rabbitmq-server
+    state: present
+
+- name: install rabbitmq erlang
+  apt:
+    pkg:
+      - erlang-base
+      - erlang-asn1
+      - erlang-crypto
+      - erlang-eldap
+      - erlang-ftp
+      - erlang-inets
+      - erlang-mnesia
+      - erlang-os-mon
+      - erlang-parsetools
+      - erlang-public-key
+      - erlang-runtime-tools
+      - erlang-snmp
+      - erlang-ssl
+      - erlang-syntax-tools
+      - erlang-tftp
+      - erlang-tools
+      - erlang-xmerl
+    state: present
+    update_cache: yes
+
+- name: install rabbitmq
+  apt:
+    name: rabbitmq-server
+    state: present
+    update_cache: yes

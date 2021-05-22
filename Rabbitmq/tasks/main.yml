@@ -1,0 +1,34 @@
+---
+# tasks file for Rabbitmq
+
+- name: rabbitmq installation
+  include: install.yml
+  tags:
+    - rabbitmq
+
+- name: rabbitmq configuration
+  include: config.yml
+  tags:
+    - rabbitmq
+    - rabbitmq-conf
+
+- name: rabbitmq vhosts
+  include: vhosts.yml
+  tags:
+    - rabbitmq
+    - rabbitmq-vhosts
+
+- name: rabbitmq users
+  include: users.yml
+  tags:
+    - rabbitmq
+    - rabbitmq-users
+
+- name: start and enable rabbitmq daemon
+  systemd:
+    name: rabbitmq-server
+    daemon_reload: true
+    state: started
+    enabled: true
+  tags:
+    - rabbitmq

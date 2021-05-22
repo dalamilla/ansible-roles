@@ -1,0 +1,11 @@
+---
+# tasks install file for Rabbitmq
+
+- name: add rabbitmq configuration file
+  template:
+    src: rabbitmq.conf.j2
+    dest: /etc/rabbitmq/rabbitmq.conf
+    owner: root
+    group: rabbitmq
+  when: rabbitmq_config != {}
+  notify: restart rabbitmq service

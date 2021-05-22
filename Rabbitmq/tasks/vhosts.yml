@@ -1,0 +1,8 @@
+---
+# tasks vhosts file for Rabbitmq
+
+- name: rabbitmq vhosts
+  rabbitmq_vhost:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ rabbitmq_vhosts }}"
