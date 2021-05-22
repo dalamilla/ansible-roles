@@ -13,10 +13,10 @@ Role Variables
 
 The variable "redis_password" are required. if variables are not defined, the default variables are used.
 
-| Variable                   | Default              | Description                           |
-| ---------------------------| ---------------------| --------------------------------------|
-| **redis_password**         | 'password'           | Password of Redis.                    |
-| **redis_config**           | {}                   | Dict of Redis configuration.          |
+| Variable                   | Default              | Description                                        |
+| ---------------------------| ---------------------| ---------------------------------------------------|
+| **redis_password**         | 'password'           | Password of Redis.                                 |
+| **redis_config**           | {}                   | Dict of Redis configuration (check default below). |
 
 Default configuration for redis.conf (redis_config variable):
 

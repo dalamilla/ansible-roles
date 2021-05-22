@@ -23,9 +23,9 @@ None of the variables are required. if variables are not defined, the default va
 | **rabbitmq_erlang_pkg_url** | '{{ rabbitmq_url }}/rabbitmq-erlang/deb/{{ ansible_distribution | lower }}' | URL of rabbitmq-erlang repo.                      |
 | **rabbitmq_server_pkg_url** | '{{ rabbitmq_url }}/rabbitmq-server/deb/{{ ansible_distribution | lower }}' | URL of rabbitmq-server repo.                      |
 | **rabbitmq_channel**        | 'main'                                                                      | Channel of rabbitmq installation.                 |
-| **rabbitmq_config**         | {}                                                                          | Dict of rabbitmq.conf file (check conf below).    |
-| **rabbitmq_users**          | []                                                                          | List of dicts of users (check conf below).     |
-| **rabbitmq_vhosts**         | []                                                                          | List of dicts of vhost (check conf below).     |
+| **rabbitmq_config**         | {}                                                                          | Dict of rabbitmq.conf file (check usage below).    |
+| **rabbitmq_users**          | []                                                                          | List of dicts of users (check usage below).     |
+| **rabbitmq_vhosts**         | []                                                                          | List of dicts of vhost (check usage below).     |
 
 
 Configuration dict for rabbitmq.conf (rabbitmq_config variable), if it's not defined doesn't create the file (default installation):

@@ -19,7 +19,7 @@ The variable "mongodb_root_pass" are required. if variables are not defined, the
 | **mongodb_key_url**                 | 'https://www.mongodb.org/static/pgp/server-{{ mongodb_version }}.asc' | URL of Mongodb key.                                              |
 | **mongodb_pkg_url**                 | 'https://repo.mongodb.org/apt/{{ ansible_distribution | lower }}'     | URL of Mongodb repo package.                                     |
 | **mongodb_root_pass**               | ''                                                                    | Password of root user.                                           |
-| **mongodb_users**                   | []                                                                    | List of dicts of users (check default below).                    |
+| **mongodb_users**                   | []                                                                    | List of dicts of users (check usage below).                    |
 | **mongodb_conf_storage**            | {}                                                                    | Dict of Mongodb storage config (check default below).            |
 | **mongodb_conf_systemLog**          | {}                                                                    | Dict of Mongodb systemLog config (check default below).          |
 | **mongodb_conf_net**                | {}                                                                    | Dict of Mongodb net config (check default below).                |
