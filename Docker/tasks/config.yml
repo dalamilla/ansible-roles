@@ -1,10 +1,19 @@
 ---
-# tasks install file for Docker
+# tasks config file for Docker
+
+- name: create docker directory
+  file:
+    path: '/etc/docker'
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
 
 - name: add docker configuration file
-  template:
-    src: daemon.json.j2
+  copy:
+    content: "{{ docker_config | to_nice_json }}"
     dest: /etc/docker/daemon.json
     owner: root
     group: root
+    mode: '0644'
   notify: restart docker service
