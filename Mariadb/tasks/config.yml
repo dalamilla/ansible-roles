@@ -1,5 +1,5 @@
 ---
-# tasks config file for mariadb
+# tasks config file for Mariadb
 
 - name: copy mariadb configuration
   template:

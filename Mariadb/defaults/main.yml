@@ -1,5 +1,5 @@
 ---
-# defaults file for mariadb
+# defaults main file for Mariadb
 
 mariadb_version: '10.5'
 

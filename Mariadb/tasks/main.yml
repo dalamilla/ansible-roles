@@ -1,5 +1,5 @@
 ---
-# tasks main file for mariadb
+# tasks main file for Mariadb
 
 - name: mariadb installation
   include: install.yml

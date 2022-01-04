@@ -1,5 +1,5 @@
 ---
-# tasks users file for mariadb
+# tasks users file for Mariadb
 
 - name: mariadb users
   mysql_user:

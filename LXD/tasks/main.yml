@@ -1,5 +1,5 @@
 ---
-# tasks file for LXD
+# tasks main file for LXD
 
 - name: lxd installation
   include: install.yml

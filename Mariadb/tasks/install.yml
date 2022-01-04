@@ -1,5 +1,5 @@
 ---
-# tasks install file for mariadb
+# tasks install file for Mariadb
 
 - name: install mariadb dependencies
   apt:

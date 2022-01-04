@@ -1,5 +1,5 @@
 ---
-# tasks dbs file for mariadb
+# tasks dbs file for Mariadb
 
 - name: mariadb databases
   mysql_db:

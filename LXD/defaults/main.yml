@@ -1,5 +1,5 @@
 ---
-# defaults file for LXD
+# defaults main file for LXD
 
 lxd_version: '4.0/stable'
 
