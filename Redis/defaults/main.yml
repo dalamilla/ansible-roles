@@ -1,5 +1,5 @@
 ---
-# defaults file for Redis
+# defaults main file for Redis
 
 redis_password: ''
 

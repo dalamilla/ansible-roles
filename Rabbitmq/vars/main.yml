@@ -1,8 +1,8 @@
 ---
-# vars file for Rabbitmq
+# vars main file for Rabbitmq
 
 arch_dict:
   x86_64: 'amd64'
   aarch64: 'arm64'
 
-pkg_arch: "{{ arch_dict[ansible_architecture] }}"
+pkg_arch: '{{ arch_dict[ansible_architecture] }}'

@@ -1,5 +1,5 @@
 ---
-# defaults file for Rabbitmq
+# defaults main file for Rabbitmq
 
 rabbitmq_key_server: 'hkps://keys.openpgp.org'
 rabbitmq_key_id: '0x0A9AF2115F4687BD29803A206B73A36E6026DFCA'

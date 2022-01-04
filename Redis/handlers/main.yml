@@ -1,5 +1,5 @@
 ---
-# handlers file for Redis
+# handlers main file for Redis
 
 - name: restart redis service
   systemd:

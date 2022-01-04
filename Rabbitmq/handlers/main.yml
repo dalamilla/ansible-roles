@@ -1,5 +1,5 @@
 ---
-# handlers file for Rabbitmq
+# handlers main file for Rabbitmq
 
 - name: restart rabbitmq service
   systemd:

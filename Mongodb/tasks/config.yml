@@ -1,5 +1,5 @@
 ---
-# tasks install file for Mongodb
+# tasks config file for Mongodb
 
 - name: add mongodb configuration file
   template:

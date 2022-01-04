@@ -1,5 +1,5 @@
 ---
-# tasks install file for Redis
+# tasks config file for Redis
 
 - name: add redis configuration file
   template:
