@@ -1,0 +1,34 @@
+---
+# tasks main file for Postgresql
+
+- name: postgresql installation
+  include: install.yml
+  tags:
+    - postgresql
+
+- name: postgresql configuration
+  include: config.yml
+  tags:
+    - postgresql
+    - postgresql-conf
+
+- name: start and enable postgresql daemon
+  systemd:
+    name: postgresql
+    daemon_reload: true
+    state: started
+    enabled: true
+  tags:
+    - postgresql
+
+- name: dbs configuration
+  include: dbs.yml
+  tags:
+    - postgresql
+    - postgresql-dbs
+
+- name: users configuration
+  include: users.yml
+  tags:
+    - postgresql
+    - postgresql-users

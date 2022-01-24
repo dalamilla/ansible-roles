@@ -1,0 +1,25 @@
+---
+# defaults users file for Postgresql
+
+- name: postgresql users
+  become_user: postgres
+  postgresql_user:
+    name: "{{ item.name }}"
+    password: "{{ item.password }}"
+    state: "{{ item.state | default('present') }}"
+  no_log: true
+  environment:
+    PGOPTIONS: "-c password_encryption=scram-sha-256"
+  with_items: "{{ postgresql_users }}"
+
+- name: postgresql users privs
+  become_user: postgres
+  postgresql_privs:
+    role: "{{ item.name }}"
+    database: "{{ item.db }}"
+    privs: "{{ item.privs }}"
+    type: "{{ item.type }}"
+    objs: "{{ item.objs }}"
+    state: "{{ item.state | default('present') }}"
+  no_log: true
+  with_items: "{{ postgresql_users }}"

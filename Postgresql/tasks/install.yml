@@ -1,0 +1,30 @@
+---
+# tasks install file for Postgresql
+
+- name: install postgresql dependencies
+  apt:
+    pkg:
+      - curl
+      - ca-certificates
+      - gnupg
+      - python3-psycopg2
+    state: present
+    update_cache: yes
+
+- name: add postgresql apt key
+  apt_key:
+    url: "{{ postgresql_key_url }}"
+    state: present
+
+- name: add postgresql apt repo
+  apt_repository:
+    repo: "deb {{ postgresql_pkg_url }} {{ ansible_distribution_release }}-pgdg {{ postgresql_channel }}"
+    filename: pgdg
+    state: present
+
+- name: install postgresql
+  apt:
+    pkg:
+      - "postgresql-{{ postgresql_version }}"
+    state: present
+    update_cache: yes

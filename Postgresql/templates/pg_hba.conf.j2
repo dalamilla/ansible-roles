@@ -1,0 +1,4 @@
+# {{ ansible_managed }}
+{% for entry in postgresql_hba %}
+{{ entry.type }}    {{ entry.database }}    {{ entry.user }}    {{ entry.address }}    {{ entry.method }}
+{% endfor %}

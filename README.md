@@ -12,3 +12,4 @@ A collection of Ansible roles.
 | [Mongodb](./Mongodb/README.md)                         | Installation and configuration of Mongodb.                         |
 | [Redis](./Redis/README.md)                             | Installation and configuration of Redis.                           |
 | [Rabbitmq](./Rabbitmq/README.md)                       | Installation and configuration of Rabbitmq.                        |
+| [PostgreSQL](./Postgresql/README.md)                   | Installation and configuration of PostgreSQL.                      |

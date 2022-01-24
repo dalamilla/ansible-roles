@@ -1,0 +1,8 @@
+---
+# handlers main file for Postgresql
+
+- name: restart postgresql service
+  systemd:
+    name: postgresql
+    daemon_reload: true
+    state: restarted

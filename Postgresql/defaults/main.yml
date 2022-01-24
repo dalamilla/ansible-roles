@@ -1,0 +1,51 @@
+---
+# defaults main file for Postgresql
+
+postgresql_version: '14'
+
+postgresql_key_url: 'https://www.postgresql.org/media/keys/ACCC4CF8.asc'
+postgresql_pkg_url: 'http://apt.postgresql.org/pub/repos/apt'
+postgresql_channel: 'main'
+
+postgresql_config:
+  data_directory: '/var/lib/postgresql/{{ postgresql_version }}/main'	
+  hba_file: '/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf'
+  ident_file: '/etc/postgresql/{{ postgresql_version }}/main/pg_ident.conf'
+  external_pid_file: '/var/run/postgresql/{{ postgresql_version }}-main.pid'
+  listen_addresses: '*'
+  port: '5432'
+  max_connections: '100'
+  unix_socket_directories: '/var/run/postgresql'
+  ssl: 'on'
+  ssl_cert_file: '/etc/ssl/certs/ssl-cert-snakeoil.pem'
+  ssl_key_file: '/etc/ssl/private/ssl-cert-snakeoil.key'
+  shared_buffers: '128MB'
+  dynamic_shared_memory_type: 'posix'
+  max_wal_size: '1GB'
+  min_wal_size: '80MB'
+  log_line_prefix: '%m [%p] %q%u@%d '
+  log_timezone: 'Etc/UTC'
+  cluster_name: '{{ postgresql_version }}/main'	
+  stats_temp_directory: '/var/run/postgresql/{{ postgresql_version }}-main.pg_stat_tmp'
+  datestyle: 'iso, mdy'
+  timezone: 'Etc/UTC'
+  lc_messages: 'C.UTF-8'
+  lc_monetary: 'C.UTF-8'
+  lc_numeric: 'C.UTF-8'
+  lc_time: 'C.UTF-8'
+  default_text_search_config: 'pg_catalog.english'
+  include_dir: 'conf.d'
+
+postgresql_hba:
+  - {type: 'local', database: 'all', user: 'postgres', address: '',  method: 'peer'}
+  - {type: 'local', database: 'all', user: 'all', address: '',  method: 'peer'}
+  - {type: 'host', database: 'all', user: 'all', address: '127.0.0.1/32',  method: 'scram-sha-256'}
+  - {type: 'host', database: 'all', user: 'all', address: '::1/128',  method: 'scram-sha-256'}
+  - {type: 'local', database: 'replication', user: 'all', address: '',  method: 'peer'}
+  - {type: 'host', database: 'replication', user: 'all', address: '127.0.0.1/32',  method: 'scram-sha-256'}
+  - {type: 'host', database: 'replication', user: 'all', address: '::1/128',  method: 'scram-sha-256'}
+
+
+postgresql_databases: []
+
+postgresql_users: []
