@@ -1,7 +1,9 @@
 ---
 # defaults main file for LXD
 
-lxd_version: '4.0/stable'
+lxd_version: '5.0/stable'
+
+lxd_net_bridge: 'lxdbr0'
 
 lxd_ipv4_address: '10.233.62.1'
 

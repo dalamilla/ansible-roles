@@ -7,7 +7,7 @@ networks:
     ipv6.address: {{ lxd_ipv6_address }}/64
     ipv6.nat: "true"
   description: ""
-  name: lxdbr0
+  name: {{ lxd_net_bridge }}
   type: bridge
   project: default
 storage_pools:
@@ -24,7 +24,7 @@ profiles:
   devices:
     eth0:
       name: eth0
-      network: lxdbr0
+      network: {{ lxd_net_bridge }}
       type: nic
     root:
       path: /

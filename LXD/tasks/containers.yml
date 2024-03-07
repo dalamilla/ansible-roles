@@ -8,10 +8,10 @@
     source:
       type: image
       mode: pull
-      server: https://images.linuxcontainers.org
+      server: https://cloud-images.ubuntu.com/releases
       protocol: simplestreams
-      alias: ubuntu/focal
+      alias: jammy
     profiles: ["default"]
-    config: {"security.nesting": "true"}
+    config: {"security.nesting": "true", "security.syscalls.intercept.mknod": "true", "security.syscalls.intercept.setxattr": "true"}
     wait_for_ipv4_addresses: true
     timeout: 600

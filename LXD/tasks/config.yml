@@ -9,11 +9,10 @@
 - name: init lxd configuration
   shell: lxd init --preseed < /tmp/input.yml
 
-- name: copy template for lxd name resolution
+- name: copy template for systemd-resolved integration
   template:
-    src: lxd.network.j2
-    dest: /etc/systemd/network/lxd.network
+    src: lxd-dns.service.j2
+    dest: /etc/systemd/system/lxd-dns-{{ lxd_net_bridge }}.service
     owner: root
     group: root
     mode: 0644
-  notify: enable systemd-networkd

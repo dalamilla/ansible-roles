@@ -12,6 +12,15 @@
     - lxd
     - lxd-conf
 
+- name: start and enable systemd-resolved
+  systemd:
+    name: lxd-dns-{{ lxd_net_bridge }}
+    daemon_reload: true
+    state: started
+    enabled: true
+  tags:
+    - lxd
+
 - name: start and enable lxd daemon
   systemd:
     name: snap.lxd.daemon
