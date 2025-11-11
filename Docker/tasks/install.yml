@@ -27,17 +27,17 @@
   pip:
     name: docker
 
-- name: add docker apt key
-  apt_key:
-    url: "{{ docker_url }}/gpg"
+- name: add docker repository
+  deb822_repository:
+    name: docker
+    types: deb
+    uris: "{{ docker_url }}"
+    suites: "{{ ansible_distribution_release }}"
+    components: "{{ docker_channel }}"
+    architectures: "{{ pkg_arch }}"
+    signed_by: "{{ docker_url }}/gpg"
     state: present
 
-- name: add docker apt repo
-  apt_repository:
-    repo: "deb [arch={{ pkg_arch }}] {{ docker_url }} {{ ansible_distribution_release }} {{ docker_channel }}"
-    filename: docker
-    state: present
-  
 - name: install docker
   apt:
     pkg:
